@@ -1,0 +1,19 @@
+{
+  "site": {
+    "name": "CoolCheng Blog",
+    "tagline": "Notes, projects, and field logs.",
+    "url": "https://jocheng99.github.io/",
+    "language": "zh-CN"
+  },
+  "author": {
+    "name": "CoolCheng",
+    "location": "China",
+    "bio": "Personal blog owner. Replace this with a real short bio."
+  },
+  "paths": {
+    "siteSource": "src",
+    "contentSource": "src/content/blog",
+    "publishOutput": "dist",
+    "previewOutput": "tmp/blog/render_check"
+  }
+}

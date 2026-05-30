@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>jocheng的主页</title>
+  
+  
+  <link href="https://jocheng.gitee.io/coolcheng/atom.xml" rel="self"/>
+  
+  <link href="https://jocheng.gitee.io/coolcheng/"/>
+  <updated>2023-09-06T14:10:00.459Z</updated>
+  <id>https://jocheng.gitee.io/coolcheng/</id>
+  
+  <author>
+    <name>Jocheng</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>makedown文本测试</title>
+    <link href="https://jocheng.gitee.io/coolcheng/2023/09/06/makedowntest/"/>
+    <id>https://jocheng.gitee.io/coolcheng/2023/09/06/makedowntest/</id>
+    <published>2023-09-06T09:12:44.000Z</published>
+    <updated>2023-09-06T14:10:00.459Z</updated>
+    
+    <content type="html"><![CDATA[<p>一些对markdown语法的运用测试</p><span id="more"></span><pre><code># 一级## 二级### 三级</code></pre><p>效果： </p><h1 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h1><h2 id="二级"><a href="#二级" class="headerlink" title="二级"></a>二级</h2><h3 id="三级"><a href="#三级" class="headerlink" title="三级"></a>三级</h3><pre><code>一级=========二级-------</code></pre><p>效果：</p><h1 id="一级"><a href="#一级" class="headerlink" title="一级"></a>一级</h1><h2 id="二级-1"><a href="#二级-1" class="headerlink" title="二级"></a>二级</h2><pre><code>这是不换行测试没换行吧  这是换行测试，需要两个空格加回车  </code></pre><p>效果：</p><p>这是不换行测试<br>没换行吧<br>这是换行测试，需要两个空格加回车</p><pre><code>**加粗** ，或者 __这样__  *斜体* ，或者 _这样_ ***斜体加粗*** </code></pre><p>效果：  </p><p><strong>加粗</strong> ，或者 <strong>这样</strong><br> <em>斜体</em> ，或者 _这样_<br><strong><em>斜体加粗</em></strong>  </p><pre><code>&gt;这里是引用    一般是这样 &gt;&gt;中间空白行加符号  换行加两个空格  &gt;   &gt;&gt;现在是嵌套    </code></pre><p>效果：</p><blockquote><p>这里是引用<br>一般是这样 </p><p>中间空白行加符号<br>换行加两个空格  </p><blockquote><p>现在是嵌套  </p></blockquote></blockquote><p>记得段落空一行  </p><p>下面是无序列表  </p><pre><code>- 测试- 哈哈- 无序列表</code></pre><p>效果： </p><ul><li>测试</li><li>哈哈</li><li>无序列表</li></ul><p>下面是有序列表</p><pre><code>1. 记得空格2. 第二3. 还可以嵌套      1. 像这样    2. 需要缩进    3. 嘿嘿          1. 得        2. 哈哈        3. 没了  </code></pre><p>效果：</p><ol><li>记得空格</li><li>第二</li><li>还可以嵌套  <ol><li>像这样</li><li>需要缩进</li><li>嘿嘿  <ol><li>得</li><li>哈哈</li><li>没了  </li></ol></li></ol></li></ol><p>下面测试代码和代码块  </p><pre><code>use `code`反引号，或者``像这样使用 `code` 的效果``   </code></pre><p>效果：</p><p>use <code>code</code>反引号，或者<code>像这样使用 `code` 的效果</code></p><p>代码块使用Tab  </p><pre><code>#include  &lt;stdio.h&gt;`int main(void)`&#123;    printf(&quot;Hello world\n&quot;);&#125;</code></pre><p>代码块注意空格</p><p>分隔符  </p><p><code>***</code>或<code>---</code>  </p><p>效果：</p><hr><hr><p>注意：前后空一行  </p><p>公式测试  </p><script type="math/tex; mode=display">f(x) = a+b</script><script type="math/tex; mode=display">\tilde{x}=0</script><script type="math/tex; mode=display">\alpha^{2} + \beta_1 = \Theta</script><p>This is inline expression: $ax^2+bx+c&gt;0$.</p><p>This is a block expression:</p><script type="math/tex; mode=display">\displaystyle \frac{1}{\Bigl(\sqrt{\phi \sqrt{5}}-\phi\Bigr) e^{\frac25 \pi}} = 1+\frac{e^{-2\pi}} {1+\frac{e^{-4\pi}} {1+\frac{e^{-6\pi}} {1+\frac{e^{-8\pi}} {1+\cdots} } } }</script><p>Or use $LaTeX$ environment:  </p><script type="math/tex; mode=display">A = \left \{ \begin{matrix}1& 3 \\2& 4 \\\end{matrix} \right\}</script><script type="math/tex; mode=display">\left [ \begin{matrix}1& 3 \\2& 4 \\\end{matrix} \right ]</script><script type="math/tex; mode=display">\left | \begin{matrix}1 &6   & 9 \\7 &90 & f(x)  \\9 & \psi(x) &g(x) \\\end{matrix} \right |</script><p>编号<br>使用mathtype  </p> \[\left| {\begin{array}{*{20}{c}}a&s&x\\b&s&{xx}\\{cc}&s&{xxx}\end{array}} \right|\] ]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;一些对markdown语法的运用测试&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Test" scheme="https://jocheng.gitee.io/coolcheng/categories/Test/"/>
+    
+    
+    <category term="test" scheme="https://jocheng.gitee.io/coolcheng/tags/test/"/>
+    
+    <category term="makedown" scheme="https://jocheng.gitee.io/coolcheng/tags/makedown/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Game：塞尔达传说</title>
+    <link href="https://jocheng.gitee.io/coolcheng/2021/12/03/game/"/>
+    <id>https://jocheng.gitee.io/coolcheng/2021/12/03/game/</id>
+    <published>2021-12-03T07:10:23.000Z</published>
+    <updated>2023-09-05T11:59:59.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>塞尔达传说游戏介绍</p><span id="more"></span><h2 id="塞尔达传说"><a href="#塞尔达传说" class="headerlink" title="塞尔达传说"></a>塞尔达传说</h2><p><em>日文：The Hyrule Fantasy: ゼルダの伝<br>英文：The Hyrule Fantasy: The Legend of Zelda<br>发售日期：1986年02月21日（日版）/1987年06月（美版）/1987年（欧版）</em>  </p><blockquote><p>塞尔达传说（任天堂制作、发行的系列动作冒险游戏）_百度百科 (baidu.com)</p></blockquote><h2 id="海拉鲁王国"><a href="#海拉鲁王国" class="headerlink" title="海拉鲁王国"></a>海拉鲁王国</h2><p>海拉鲁王国是系列多数作品中登场的架空国家，国民以海利亚人为主，并由三角力量与洛夫特飞鸟符号所组成的符号为国徽，首都称为海拉鲁城，但历代作的海拉鲁城造型还是因为地形地貌及位置而有所不同。海拉鲁王国有一个既定传统，凡王室公主皆视为海利亚女神之血继承者以塞尔达命名，有些版本里塞尔达公主直接以国家统治者的身份登场，另外领土内一些亚人种族如摩格玛族、卓拉族等会自成一国。不过从海利亚人还能跟他们和平共处来看，海拉鲁王国对这些部落自治很宽容，也对应了《御天之剑》剧情设定（在上古战争中，海利亚女神与亚人种族组成联合军讨伐魔族之主）。  </p><div class="justified-gallery"><!-- <div class="lightGallery"> -->![王国之类截图]( /image/zelda/王国之泪截图1.jpg )![王国之类截图]( /image/zelda/王国之泪截图2.jpg )![王国之类截图]( /image/zelda/王国之泪截图3.jpg )  ![王国之类截图]( /image/zelda/王国之泪截图4.jpg )![王国之类截图]( /image/zelda/王国之泪截图5.jpg )![王国之类截图]( /image/zelda/王国之泪截图6.jpg )</div><h2 id="历史"><a href="#历史" class="headerlink" title="历史"></a>历史</h2><p>系列的第一款作品《塞尔达传说》（ゼルダの伝説）在1986年2月21日于日本发行，之后在1987年内于美国和欧洲地区上市。若以现今的标准来看是一款非常简单的游戏，但在当时是十分先进的作品。《塞尔达传说》的创新之处在包括有多种不同的道具可以使用、一个充满秘密和等待探索的广大世界，以及能够在使用电池的主内存中储存游戏进度。这款游戏同时也包含了“第二任务”，在游戏破关后，玩者可以在另一个世界中重新进行冒险，并包含更具有挑战性的迷宫。除了技术上的创新之外，《塞尔达传说》的游戏方式（例如寻找物品并用它们来解决谜题、与怪物的即时战斗、探索广大的环境）也非常成功，这样的内容在之后也被许多的游戏复制。《塞尔达传说》的修改版本在1990年代中期于日本推出，利用超级任天堂主机的“Satellaview”卫星功能推出。</p><p>第二款作品《林克的冒险》（リンクの冒険）在1987年1月14日推出，游戏内容与前作不同。在本作中，游戏的视点从俯瞰角度转为“横向卷轴”（侧面）模式，并加入了其他塞尔达作品中没有的角色扮演要素（例如经验值）。此外，截至《四人之剑+》为止，本作是唯一一款林克无法收集“卢比”（海拉鲁城中的货币）的塞尔达作品。由于这些游戏本质上的变更，许多人将《林克的冒险》视为本系列的另类作品。别于红白机其他游戏的灰色外盒，本作品的包装采用了金色外盒。</p><p>四年之后，《众神的三角力量》（ゼルダの伝説 神々のトライフォース）发行，重新采用俯瞰视点（四分之三俯角），并加入了平行世界的概念，玩者可探索另一个黑暗世界（暗の世界）。本作在1991年于超级任天堂主机上推出，2003年3月14日以包含在《众神的三角力量与四人之剑》中的方式于 Game Boy Advance 上发售，之后于2007年1月22日在 Wii 主机的“Virtual Console”上推出。本作之后也以《BS塞尔达传说-古代的石盘》（BSゼルダの伝説 古代の石盤）为名在日本推出 Satellaview 版本。</p><p>任天堂公司在2011年E3展中释出了Wii U版本的塞尔达游戏，但内容只是林克在和巨型蜘蛛决斗。玩家并不能操控林克的行动，但可以操控白天或晚上，以及切换屏幕成地图或是游戏画面。</p><p>2014年6月11日E3展上青沼英二宣布2015年释出塞尔达Wii U新作《塞尔达传说 旷野之息》，且公开了一段林克和怪物战斗的画面，强调此作有广大的地图和更多元化非单一的解谜。在经过两次延期之后，游戏于2017年3月与任天堂Switch一同发售。</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;塞尔达传说游戏介绍&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Game" scheme="https://jocheng.gitee.io/coolcheng/categories/Game/"/>
+    
+    
+    <category term="test" scheme="https://jocheng.gitee.io/coolcheng/tags/test/"/>
+    
+    <category term="game" scheme="https://jocheng.gitee.io/coolcheng/tags/game/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>博客首篇！</title>
+    <link href="https://jocheng.gitee.io/coolcheng/2021/10/31/First/"/>
+    <id>https://jocheng.gitee.io/coolcheng/2021/10/31/First/</id>
+    <published>2021-10-31T07:10:23.000Z</published>
+    <updated>2023-09-05T11:59:59.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="博客介绍"><a href="#博客介绍" class="headerlink" title="博客介绍"></a>博客介绍</h2><p>welcome!</p><span id="more"></span><hr><h2 id="博客目的"><a href="#博客目的" class="headerlink" title="博客目的"></a>博客目的</h2><p>练习hexo<br>记录学习经历  </p><hr><h2 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h2><p>视频分享嘿嘿<br><!-- <iframe height=450 width=800 src="//player.bilibili.com/player.html?aid=457827780&bvid=BV1m5411V7zi&cid=256925718&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe> --></p><div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;"><iframe src="//player.bilibili.com/player.html?aid=457827780&bvid=BV1m5411V7zi&cid=256925718&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"> </iframe></div>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;博客介绍&quot;&gt;&lt;a href=&quot;#博客介绍&quot; class=&quot;headerlink&quot; title=&quot;博客介绍&quot;&gt;&lt;/a&gt;博客介绍&lt;/h2&gt;&lt;p&gt;welcome!&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Test" scheme="https://jocheng.gitee.io/coolcheng/categories/Test/"/>
+    
+    
+    <category term="欢迎小弟" scheme="https://jocheng.gitee.io/coolcheng/tags/%E6%AC%A2%E8%BF%8E%E5%B0%8F%E5%BC%9F/"/>
+    
+    <category term="test" scheme="https://jocheng.gitee.io/coolcheng/tags/test/"/>
+    
+  </entry>
+  
+</feed>

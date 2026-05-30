@@ -1,0 +1,4 @@
+interface:
+  display_name: "Windows Scientific Reports"
+  short_description: "Local Office, Python, MATLAB report workflow"
+  default_prompt: "Use $windows-scientific-report-workflow to generate and validate a scientific DOCX/PDF report on this Windows workstation."

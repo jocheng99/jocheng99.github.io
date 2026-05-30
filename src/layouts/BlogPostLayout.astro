@@ -1,0 +1,42 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import CategoryBadge from "../components/CategoryBadge.astro";
+import TagList from "../components/TagList.astro";
+import { render } from "astro:content";
+import { formatDate, postSlug, type BlogPost } from "../utils/blog";
+import { withBase } from "../utils/paths";
+
+interface Props {
+  post: BlogPost;
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const updatedDate = post.data.updatedDate;
+const cover = post.data.cover ? withBase(post.data.cover) : "";
+---
+
+<BaseLayout
+  title={post.data.title}
+  description={post.data.description}
+  path={`/blog/${postSlug(post)}/`}
+  image={post.data.cover || undefined}
+>
+  <article class="post-page">
+    <header class="post-hero">
+      <a class="back-link" href={withBase("/blog/")}>返回全部文章</a>
+      <CategoryBadge category={post.data.category} />
+      <h1>{post.data.title}</h1>
+      <p>{post.data.description}</p>
+      <div class="post-date-row">
+        <time datetime={post.data.pubDate.toISOString()}>发布：{formatDate(post.data.pubDate)}</time>
+        {updatedDate && <time datetime={updatedDate.toISOString()}>更新：{formatDate(updatedDate)}</time>}
+      </div>
+      <TagList tags={post.data.tags} />
+    </header>
+    {cover && <img class="post-cover" src={cover} alt={`${post.data.title} 封面`} />}
+    <div class="prose">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

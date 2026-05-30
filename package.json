@@ -1,0 +1,17 @@
+{
+  "name": "coolcheng-blog",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --host 127.0.0.1",
+    "build": "astro build",
+    "build:search": "astro build && pagefind --site dist",
+    "preview": "astro preview --host 127.0.0.1"
+  },
+  "dependencies": {
+    "astro": "^5.0.0",
+    "pagefind": "^1.3.0",
+    "typescript": "^5.8.0"
+  }
+}

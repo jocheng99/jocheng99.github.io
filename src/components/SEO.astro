@@ -1,0 +1,39 @@
+---
+import { canonicalUrl, DEFAULT_OG_IMAGE, SITE_DESCRIPTION, SITE_NAME, withBase } from "../utils/paths";
+
+interface Props {
+  title?: string;
+  description?: string;
+  path?: string;
+  image?: string;
+}
+
+const {
+  title = SITE_NAME,
+  description = SITE_DESCRIPTION,
+  path = "/",
+  image = DEFAULT_OG_IMAGE
+} = Astro.props;
+
+const site = Astro.site?.toString() || "https://jocheng.gitee.io";
+const fullTitle = title === SITE_NAME ? SITE_NAME : `${title} | ${SITE_NAME}`;
+const canonical = canonicalUrl(path, site);
+const ogImage = canonicalUrl(image, site);
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+<link rel="icon" href={withBase("/assets/favicon.svg")} type="image/svg+xml" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content={SITE_NAME} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={ogImage} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />

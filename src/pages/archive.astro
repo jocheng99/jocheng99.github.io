@@ -1,0 +1,29 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { formatDate, getArchiveGroups, postSlug } from "../utils/blog";
+import { withBase } from "../utils/paths";
+
+const groups = await getArchiveGroups();
+---
+
+<BaseLayout title="归档" description="按年份归档 CoolCheng Blog 的文章。" path="/archive/">
+  <section class="simple-page">
+    <p class="eyebrow">Archive</p>
+    <h1>归档</h1>
+    <div class="archive-list">
+      {groups.map((group) => (
+        <section>
+          <h2>{group.year}</h2>
+          <ol>
+            {group.posts.map((post) => (
+              <li>
+                <time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>
+                <a href={withBase(`/blog/${postSlug(post)}/`)}>{post.data.title}</a>
+              </li>
+            ))}
+          </ol>
+        </section>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

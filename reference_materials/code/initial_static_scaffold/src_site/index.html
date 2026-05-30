@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jocheng</title>
+    <meta name="description" content="Jocheng personal blog: notes, projects, and field logs.">
+    <link rel="icon" href="./assets/images/favicon.png" type="image/png">
+    <link rel="stylesheet" href="./styles/main.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="./index.html" aria-label="Jocheng home">Jocheng</a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="#posts">文章</a>
+        <a href="#projects">项目</a>
+        <a href="#about">关于</a>
+      </nav>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle color theme">
+        <span data-theme-label>Light</span>
+      </button>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Personal Blog</p>
+          <h1 id="hero-title">Jocheng</h1>
+          <p class="hero-summary">记录项目、阅读、技术实践和阶段性思考。先保持轻量，给长期写作留出清晰的位置。</p>
+          <div class="hero-actions" aria-label="Featured links">
+            <a class="button primary" href="#posts">阅读文章</a>
+            <a class="button secondary" href="#about">了解我</a>
+          </div>
+        </div>
+        <figure class="hero-media">
+          <img src="./assets/images/site-cover.png" alt="Abstract desk scene with notes and code panes">
+        </figure>
+      </section>
+
+      <section class="section-band intro-band" aria-labelledby="now-title">
+        <div class="section-heading">
+          <p class="eyebrow">Now</p>
+          <h2 id="now-title">当前关注</h2>
+        </div>
+        <div class="focus-grid">
+          <article>
+            <h3>写作</h3>
+            <p>沉淀项目经验、读书笔记和研究记录，优先保证内容可持续维护。</p>
+          </article>
+          <article>
+            <h3>技术</h3>
+            <p>保留轻量静态结构，等内容稳定后再决定是否引入框架或自动生成流程。</p>
+          </article>
+          <article>
+            <h3>整理</h3>
+            <p>把长期内容、临时实验和发布输出分开，减少后续迁移成本。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="content-section" id="posts" aria-labelledby="posts-title">
+        <div class="section-heading row-heading">
+          <div>
+            <p class="eyebrow">Writing</p>
+            <h2 id="posts-title">最新文章</h2>
+          </div>
+          <div class="filter-group" aria-label="Filter posts">
+            <button type="button" class="filter-button active" data-filter="all">全部</button>
+            <button type="button" class="filter-button" data-filter="project">项目</button>
+            <button type="button" class="filter-button" data-filter="note">笔记</button>
+          </div>
+        </div>
+
+        <div class="post-list" data-post-list>
+          <article class="post-card" data-tags="project note">
+            <time datetime="2026-05-30">2026-05-30</time>
+            <h3><a href="./posts/welcome.html">博客开始</a></h3>
+            <p>记录个人博客项目的第一步：先确定内容目录、页面链接和视觉基调。</p>
+            <div class="tag-row" aria-label="Tags">
+              <span>project</span>
+              <span>note</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-band" id="projects" aria-labelledby="projects-title">
+        <div class="section-heading">
+          <p class="eyebrow">Projects</p>
+          <h2 id="projects-title">项目索引</h2>
+        </div>
+        <div class="project-list">
+          <article class="project-item">
+            <p class="project-kicker">Site</p>
+            <h3>个人博客结构</h3>
+            <p>记录这个站点从内容目录、页面风格到发布流程的逐步搭建过程。</p>
+          </article>
+          <article class="project-item">
+            <p class="project-kicker">Content</p>
+            <h3>文章体系</h3>
+            <p>后续可以按技术、阅读、项目复盘和研究记录拆分栏目。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="content-section about-section" id="about" aria-labelledby="about-title">
+        <div class="section-heading">
+          <p class="eyebrow">About</p>
+          <h2 id="about-title">关于 Jocheng</h2>
+        </div>
+        <p>偏好把项目过程、技术判断和长期笔记放在一个安静、可检索、能持续更新的地方。</p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2026 Jocheng. Built as a lightweight static blog.</p>
+    </footer>
+
+    <script src="./scripts/main.js"></script>
+  </body>
+</html>
