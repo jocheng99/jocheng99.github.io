@@ -36,12 +36,5 @@ const TAXONOMY_SLUGS: Record<string, string> = {
   "截图": "screenshots",
   "静态站点": "static-site",
   "Astro": "astro",
-  "Gitee Pages": "gitee-pages",
-  "AI 工具": "ai-tools",
-  "科研工作流": "research-workflow",
-  "PPT 自动化": "ppt-automation",
-  "提示词": "prompting",
-  "Codex": "codex",
-  "项目管理": "project-management",
-  "需求澄清": "requirement-clarification"
+  "Gitee Pages": "gitee-pages"
 };
