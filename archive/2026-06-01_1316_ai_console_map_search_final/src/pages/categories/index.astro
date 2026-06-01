@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getAllCategories } from "../../utils/blog";
+import { taxonomyPath } from "../../utils/taxonomy";
+import { withBase } from "../../utils/paths";
+
+const categories = await getAllCategories();
+---
+
+<BaseLayout title="分类" description="按分类浏览 CoolCheng Blog 的文章。" path="/categories/">
+  <section class="simple-page">
+    <p class="eyebrow">Categories</p>
+    <h1>分类</h1>
+    <div class="category-grid page-grid">
+      {categories.map((category) => (
+        <a class="category-card" href={withBase(taxonomyPath("categories", category.name))}>
+          <span>{category.name}</span>
+          <strong>{category.count} 篇文章</strong>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

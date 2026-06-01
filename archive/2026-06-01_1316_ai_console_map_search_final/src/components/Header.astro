@@ -1,0 +1,32 @@
+---
+import { SITE_VERSION, withBase } from "../utils/paths";
+
+const navItems = [
+  { href: "/", label: "首页" },
+  { href: "/blog/", label: "博客" },
+  { href: "/map/", label: "地图" },
+  { href: "/categories/", label: "分类" },
+  { href: "/tags/", label: "标签" },
+  { href: "/archive/", label: "归档" },
+  { href: "/search/", label: "搜索" },
+  { href: "/about/", label: "关于" }
+];
+---
+
+<header class="site-header">
+  <a class="skip-link" href="#main-content">跳到正文</a>
+  <div class="header-inner">
+    <a class="brand" href={withBase("/")} aria-label="CoolCheng Blog 首页">
+      <img src={withBase("/assets/logo.svg")} alt="" width="30" height="30" />
+      <span>CoolCheng</span>
+    </a>
+    <div class="header-status" aria-label="站点运行状态">
+      <span class="status-light online" aria-hidden="true"></span>
+      <span>site console</span>
+      <code>{SITE_VERSION}</code>
+    </div>
+    <nav class="site-nav" aria-label="主导航">
+      {navItems.map((item) => <a href={withBase(item.href)}>{item.label}</a>)}
+    </nav>
+  </div>
+</header>

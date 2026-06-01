@@ -1,0 +1,86 @@
+---
+import { formatDate, postSlug, type BlogPost } from "../utils/blog";
+import { withBase } from "../utils/paths";
+
+interface TocHeading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+interface Props {
+  headings: TocHeading[];
+  recentPosts: BlogPost[];
+}
+
+const { headings, recentPosts } = Astro.props;
+const tocHeadings = headings.filter((heading) => heading.depth >= 2 && heading.depth <= 3);
+---
+
+<aside class="article-sidebar" aria-label="文章侧栏">
+  <section class="article-widget author-card" aria-label="作者信息">
+    <img src={withBase("/assets/avatar/avatar.png")} alt="CoolCheng 头像" width="72" height="72" />
+    <div>
+      <h2>CoolCheng</h2>
+      <p>记录技术工具、项目实践、游戏和日常思考。</p>
+    </div>
+    <div class="author-links">
+      <a class="icon-link" href="mailto:531062291@qq.com" aria-label="发送邮件到 531062291@qq.com" title="邮箱">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 6h16v12H4z" />
+          <path d="m4 7 8 6 8-6" />
+        </svg>
+      </a>
+      <a class="icon-link" href="https://github.com/jocheng99" aria-label="访问 GitHub 主页" title="GitHub">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.21.68-.48v-1.7c-2.78.6-3.37-1.18-3.37-1.18-.45-1.15-1.1-1.45-1.1-1.45-.9-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.93 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0 1 12 6.05c.85 0 1.7.11 2.5.33 1.9-1.29 2.74-1.02 2.74-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.83-2.34 4.67-4.57 4.92.36.31.68.92.68 1.86v2.76c0 .27.18.58.69.48A10 10 0 0 0 12 2Z" />
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  {tocHeadings.length > 0 && (
+    <nav class="article-widget toc-widget" aria-label="文章目录">
+      <h2>文章目录</h2>
+      <ol>
+        {tocHeadings.map((heading) => (
+          <li class={`depth-${heading.depth}`}>
+            <a href={`#${heading.slug}`} data-toc-link={heading.slug}>{heading.text}</a>
+          </li>
+        ))}
+      </ol>
+    </nav>
+  )}
+
+  <section class="article-widget site-info-widget" aria-label="网站信息">
+    <h2>网站信息</h2>
+    <dl>
+      <div>
+        <dt>站点类型</dt>
+        <dd>Astro 静态博客</dd>
+      </div>
+      <div>
+        <dt>内容入口</dt>
+        <dd><a href={withBase("/map/")}>文章地图</a></dd>
+      </div>
+      <div>
+        <dt>站内搜索</dt>
+        <dd><a href={withBase("/search/")}>Pagefind</a></dd>
+      </div>
+    </dl>
+  </section>
+
+  {recentPosts.length > 0 && (
+    <section class="article-widget latest-widget" aria-label="最新文章">
+      <h2>最新文章</h2>
+      <ol>
+        {recentPosts.map((post) => (
+          <li>
+            <time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>
+            <a href={withBase(`/blog/${postSlug(post)}/`)}>{post.data.title}</a>
+          </li>
+        ))}
+      </ol>
+    </section>
+  )}
+</aside>

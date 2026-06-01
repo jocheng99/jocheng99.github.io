@@ -1,0 +1,46 @@
+---
+import { getPostsBySeries, postSlug, type BlogPost } from "../utils/blog";
+import { withBase } from "../utils/paths";
+
+interface Props {
+  post: BlogPost;
+}
+
+const { post } = Astro.props;
+const series = post.data.series;
+const posts = series ? await getPostsBySeries(series) : [];
+const currentIndex = posts.findIndex((item) => postSlug(item) === postSlug(post));
+const previous = currentIndex > 0 ? posts[currentIndex - 1] : undefined;
+const next = currentIndex >= 0 && currentIndex < posts.length - 1 ? posts[currentIndex + 1] : undefined;
+---
+
+{series && posts.length > 1 && (
+  <aside class="series-nav" aria-label={`${series} 系列导航`}>
+    <div class="series-nav-header">
+      <p class="eyebrow">Series</p>
+      <h2>{series}</h2>
+      <span>{currentIndex + 1} / {posts.length}</span>
+    </div>
+    <ol>
+      {posts.map((item, index) => {
+        const isCurrent = postSlug(item) === postSlug(post);
+        return (
+          <li class={isCurrent ? "current" : ""}>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            {isCurrent ? (
+              <strong>{item.data.title}</strong>
+            ) : (
+              <a href={withBase(`/blog/${postSlug(item)}/`)}>{item.data.title}</a>
+            )}
+          </li>
+        );
+      })}
+    </ol>
+    {(previous || next) && (
+      <div class="series-pager">
+        {previous ? <a href={withBase(`/blog/${postSlug(previous)}/`)}>上一篇：{previous.data.title}</a> : <span />}
+        {next ? <a href={withBase(`/blog/${postSlug(next)}/`)}>下一篇：{next.data.title}</a> : <span />}
+      </div>
+    )}
+  </aside>
+)}

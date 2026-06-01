@@ -1,0 +1,32 @@
+---
+import { postSlug, type BlogPost } from "../utils/blog";
+import { withBase } from "../utils/paths";
+
+interface Props {
+  previous?: BlogPost;
+  next?: BlogPost;
+}
+
+const { previous, next } = Astro.props;
+---
+
+{(previous || next) && (
+  <nav class="article-pager" aria-label="上一篇和下一篇">
+    {previous ? (
+      <a class="article-pager-link previous" href={withBase(`/blog/${postSlug(previous)}/`)}>
+        <span>上一篇</span>
+        <strong>{previous.data.title}</strong>
+      </a>
+    ) : (
+      <span class="article-pager-empty">已经是最新文章</span>
+    )}
+    {next ? (
+      <a class="article-pager-link next" href={withBase(`/blog/${postSlug(next)}/`)}>
+        <span>下一篇</span>
+        <strong>{next.data.title}</strong>
+      </a>
+    ) : (
+      <span class="article-pager-empty">已经是最后一篇</span>
+    )}
+  </nav>
+)}

@@ -1,0 +1,27 @@
+---
+import CategoryBadge from "./CategoryBadge.astro";
+import TagList from "./TagList.astro";
+import { formatDate, postSlug, type BlogPost } from "../utils/blog";
+import { withBase } from "../utils/paths";
+
+interface Props {
+  post: BlogPost;
+}
+
+const { post } = Astro.props;
+const href = withBase(`/blog/${postSlug(post)}/`);
+const cover = post.data.cover ? withBase(post.data.cover) : "";
+---
+
+<article class="post-card">
+  {cover && <img class="post-card-cover" src={cover} alt={`${post.data.title} 封面`} />}
+  <div class="post-card-body">
+    <div class="post-meta">
+      <time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>
+      <CategoryBadge category={post.data.category} />
+    </div>
+    <h2><a href={href}>{post.data.title}</a></h2>
+    <p>{post.data.description}</p>
+    <TagList tags={post.data.tags} />
+  </div>
+</article>
