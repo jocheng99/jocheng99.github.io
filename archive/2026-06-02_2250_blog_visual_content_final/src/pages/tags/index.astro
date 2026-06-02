@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getAllTags } from "../../utils/blog";
+import { taxonomyPath } from "../../utils/taxonomy";
+import { withBase } from "../../utils/paths";
+
+const tags = await getAllTags();
+---
+
+<BaseLayout title="标签" description="按标签浏览 CoolCheng Blog 的文章。" path="/tags/">
+  <section class="simple-page">
+    <p class="eyebrow">Tags</p>
+    <h1>标签</h1>
+    <div class="tag-cloud">
+      {tags.map((tag) => (
+        <a href={withBase(taxonomyPath("tags", tag.name))}>
+          #{tag.name}
+          <span>{tag.count}</span>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,44 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SearchHint from "../components/SearchHint.astro";
+import { withBase } from "../utils/paths";
+
+const pagefindBase = withBase("/pagefind/");
+---
+
+<BaseLayout title="站内搜索" description="使用 Pagefind 的纯静态站内搜索。" path="/search/">
+  <section class="simple-page search-page">
+    <p class="eyebrow">Search</p>
+    <h1>站内搜索</h1>
+    <p>输入关键词搜索文章标题、摘要和正文。搜索索引在 `npm run build:search` 后生成。</p>
+    <link rel="stylesheet" href={`${pagefindBase}pagefind-ui.css`} />
+    <div id="search" class="pagefind-ui" data-pagefind-ignore></div>
+    <SearchHint />
+  </section>
+  <script define:vars={{ pagefindBase }}>
+    const target = document.querySelector("#search");
+    if (target) {
+      const script = document.createElement("script");
+      script.src = pagefindBase + "pagefind-ui.js";
+      script.onload = () => {
+        if (window.PagefindUI) {
+          new window.PagefindUI({
+            element: "#search",
+            showSubResults: true,
+            translations: {
+              placeholder: "搜索文章",
+              zero_results: "没有找到匹配结果",
+              clear_search: "清除搜索"
+            }
+          });
+        } else {
+          target.innerHTML = "<p class='search-missing'>Pagefind UI 已加载，但初始化失败。</p>";
+        }
+      };
+      script.onerror = () => {
+        target.innerHTML = "<p class='search-missing'>搜索资源加载失败，请确认部署产物包含 pagefind/ 目录。</p>";
+      };
+      document.head.appendChild(script);
+    }
+  </script>
+</BaseLayout>

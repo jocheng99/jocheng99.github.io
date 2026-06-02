@@ -1,0 +1,20 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PostCard from "../../components/PostCard.astro";
+import { getAllPosts } from "../../utils/blog";
+
+const posts = await getAllPosts();
+---
+
+<BaseLayout title="全部文章" description="CoolCheng Blog 的全部非草稿文章。" path="/blog/">
+  <section class="simple-page">
+    <p class="eyebrow">Blog</p>
+    <h1>全部文章</h1>
+    <p>按发布时间倒序排列。草稿文章不会出现在这里。</p>
+  </section>
+  <section class="page-section compact-top">
+    <div class="post-list">
+      {posts.map((post) => <PostCard post={post} />)}
+    </div>
+  </section>
+</BaseLayout>

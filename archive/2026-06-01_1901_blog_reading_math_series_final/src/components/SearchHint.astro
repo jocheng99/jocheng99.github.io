@@ -1,0 +1,12 @@
+---
+import { withBase } from "../utils/paths";
+---
+
+<aside class="search-hint" aria-label="搜索说明">
+  <p>没找到合适结果时，可以换一个短词，或直接从文章地图、分类和归档继续浏览。</p>
+  <div>
+    <a href={withBase("/map/")}>文章地图</a>
+    <a href={withBase("/blog/")}>全部文章</a>
+    <a href={withBase("/archive/")}>文章归档</a>
+  </div>
+</aside>

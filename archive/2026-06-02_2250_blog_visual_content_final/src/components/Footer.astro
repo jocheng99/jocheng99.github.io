@@ -1,0 +1,15 @@
+---
+import { SITE_VERSION, withBase } from "../utils/paths";
+---
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p>© 2026 CoolCheng. Static blog build <code>{SITE_VERSION}</code>.</p>
+    <nav aria-label="页脚导航">
+      <a href={withBase("/map/")}>文章地图</a>
+      <a href={withBase("/search/")}>站内搜索</a>
+      <a href={withBase("/archive/")}>文章归档</a>
+      <a href={withBase("/about/")}>关于</a>
+    </nav>
+  </div>
+</footer>

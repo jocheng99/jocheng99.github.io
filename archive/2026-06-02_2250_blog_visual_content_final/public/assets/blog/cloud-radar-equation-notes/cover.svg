@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Cloud radar equation notes cover</title>
+  <desc id="desc">A cloud radar beam with range gates, Doppler spectrum, and simplified equations.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#07121d"/>
+      <stop offset="0.58" stop-color="#0d2532"/>
+      <stop offset="1" stop-color="#17231c"/>
+    </linearGradient>
+    <linearGradient id="beam" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#5eead4" stop-opacity="0.02"/>
+      <stop offset="0.5" stop-color="#38bdf8" stop-opacity="0.34"/>
+      <stop offset="1" stop-color="#facc15" stop-opacity="0.08"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#sky)"/>
+  <g opacity="0.16" stroke="#a7f3d0" stroke-width="1">
+    <path d="M0 420h1200M0 504h1200"/>
+    <path d="M150 390v160M300 390v160M450 390v160M600 390v160M750 390v160M900 390v160M1050 390v160"/>
+  </g>
+  <path d="M192 520 620 80 1010 160 286 548z" fill="url(#beam)"/>
+  <g fill="none" stroke="#38bdf8" stroke-width="3" opacity="0.75">
+    <path d="M310 462 612 142"/>
+    <path d="M420 432 672 154"/>
+    <path d="M530 402 742 168"/>
+    <path d="M640 372 812 182"/>
+  </g>
+  <g transform="translate(134 472)">
+    <rect x="-22" y="36" width="204" height="26" rx="13" fill="#15202b" stroke="#475569"/>
+    <path d="M0 34h140l-30-62H30z" fill="#0f2632" stroke="#5eead4" stroke-width="3"/>
+    <circle cx="70" cy="6" r="24" fill="#07121d" stroke="#5eead4" stroke-width="4"/>
+    <path d="M44 6h52M70-20v52" stroke="#5eead4" stroke-width="3" opacity="0.6"/>
+  </g>
+  <g fill="#dbeafe" opacity="0.82">
+    <ellipse cx="714" cy="142" rx="70" ry="28"/>
+    <ellipse cx="786" cy="128" rx="92" ry="36"/>
+    <ellipse cx="878" cy="152" rx="82" ry="30"/>
+    <ellipse cx="806" cy="174" rx="146" ry="34"/>
+  </g>
+  <g transform="translate(722 322)" fill="none" stroke="#f59e0b" stroke-width="5" stroke-linecap="round">
+    <path d="M0 82c24-50 46-50 70 0s46 50 70 0 46-50 70 0 46 50 70 0"/>
+    <path d="M0 120h280"/>
+  </g>
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <text x="82" y="112" fill="#effdf8" font-size="48" font-weight="850">Cloud Radar Equations</text>
+    <text x="86" y="158" fill="#9fb4c5" font-size="23">range gates, reflectivity, Doppler velocity</text>
+  </g>
+  <g font-family="Cambria Math, Georgia, serif" fill="#e8fff8" font-size="30">
+    <text x="756" y="470">R = c&#916;t / 2</text>
+    <text x="756" y="516">Z<tspan baseline-shift="sub" font-size="18">dBZ</tspan> = 10 log<tspan baseline-shift="sub" font-size="18">10</tspan>(Z)</text>
+    <text x="756" y="562">v<tspan baseline-shift="sub" font-size="18">r</tspan> = &#955; f<tspan baseline-shift="sub" font-size="18">d</tspan> / 2</text>
+  </g>
+</svg>

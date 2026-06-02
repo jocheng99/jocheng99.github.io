@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PostCard from "../../components/PostCard.astro";
+import { getAllCategories, getAllPosts } from "../../utils/blog";
+import { taxonomySlug } from "../../utils/taxonomy";
+
+export async function getStaticPaths() {
+  const posts = await getAllPosts();
+  const categories = await getAllCategories();
+  return categories.map((category) => ({
+    params: { category: taxonomySlug(category.name) },
+    props: {
+      category: category.name,
+      posts: posts.filter((post) => post.data.category === category.name)
+    }
+  }));
+}
+
+const { category, posts } = Astro.props;
+---
+
+<BaseLayout title={`分类：${category}`} description={`分类 ${category} 下的文章。`} path={`/categories/${taxonomySlug(category)}/`}>
+  <section class="simple-page">
+    <p class="eyebrow">Category</p>
+    <h1>分类：{category}</h1>
+    <p>共 {posts.length} 篇文章。</p>
+  </section>
+  <section class="page-section compact-top">
+    <div class="post-list">
+      {posts.map((post) => <PostCard post={post} />)}
+    </div>
+  </section>
+</BaseLayout>

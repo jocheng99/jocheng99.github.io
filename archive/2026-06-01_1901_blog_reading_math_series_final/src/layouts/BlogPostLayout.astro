@@ -1,0 +1,180 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import ArticlePager from "../components/ArticlePager.astro";
+import ArticleSidebar from "../components/ArticleSidebar.astro";
+import CategoryBadge from "../components/CategoryBadge.astro";
+import SeriesNav from "../components/SeriesNav.astro";
+import TagList from "../components/TagList.astro";
+import { render } from "astro:content";
+import { formatDate, getAllPosts, postSlug, type BlogPost } from "../utils/blog";
+import { DEFAULT_POST_COVER, withBase } from "../utils/paths";
+
+interface Props {
+  post: BlogPost;
+}
+
+const { post } = Astro.props;
+const { Content, headings } = await render(post);
+const updatedDate = post.data.updatedDate;
+const cover = withBase(post.data.cover || DEFAULT_POST_COVER);
+const coverClass = post.data.cover ? "post-cover" : "post-cover is-default";
+const allPosts = await getAllPosts();
+const currentIndex = allPosts.findIndex((item) => postSlug(item) === postSlug(post));
+const previousPost = currentIndex > 0 ? allPosts[currentIndex - 1] : undefined;
+const nextPost = currentIndex >= 0 && currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : undefined;
+const recentPosts = allPosts.filter((item) => postSlug(item) !== postSlug(post)).slice(0, 5);
+---
+
+<BaseLayout
+  title={post.data.title}
+  description={post.data.description}
+  path={`/blog/${postSlug(post)}/`}
+  image={post.data.cover || DEFAULT_POST_COVER}
+>
+  <div class="reading-progress" aria-hidden="true">
+    <span data-reading-progress></span>
+  </div>
+
+  <div class="post-shell">
+    <article class="post-page" data-article-page>
+      <header class="post-hero">
+        <a class="back-link" href={withBase("/blog/")}>返回全部文章</a>
+        <CategoryBadge category={post.data.category} />
+        <h1>{post.data.title}</h1>
+        <p>{post.data.description}</p>
+        <div class="post-date-row">
+          <time datetime={post.data.pubDate.toISOString()}>发布：{formatDate(post.data.pubDate)}</time>
+          {updatedDate && <time datetime={updatedDate.toISOString()}>更新：{formatDate(updatedDate)}</time>}
+        </div>
+        <TagList tags={post.data.tags} />
+      </header>
+      <img class={coverClass} src={cover} alt={`${post.data.title} 封面`} />
+      <SeriesNav post={post} />
+      <div class="prose" data-article-content>
+        <Content />
+      </div>
+      <ArticlePager previous={previousPost} next={nextPost} />
+    </article>
+    <ArticleSidebar headings={headings} recentPosts={recentPosts} />
+  </div>
+
+  <button class="back-to-top" type="button" data-back-to-top aria-label="返回顶部">↑</button>
+  <div class="image-lightbox" data-image-lightbox aria-hidden="true">
+    <button class="image-lightbox-close" type="button" data-lightbox-close aria-label="关闭图片预览">×</button>
+    <figure>
+      <img data-lightbox-image src="" alt="" />
+      <figcaption data-lightbox-caption></figcaption>
+    </figure>
+  </div>
+
+  <script>
+    const progress = document.querySelector("[data-reading-progress]");
+    const article = document.querySelector("[data-article-content]");
+    const backToTop = document.querySelector("[data-back-to-top]");
+    const lightbox = document.querySelector("[data-image-lightbox]");
+    const lightboxImage = document.querySelector("[data-lightbox-image]");
+    const lightboxCaption = document.querySelector("[data-lightbox-caption]");
+    const lightboxClose = document.querySelector("[data-lightbox-close]");
+    const tocLinks = Array.from(document.querySelectorAll("[data-toc-link]"));
+    const headingTargets = tocLinks
+      .map((link) => document.getElementById(link.getAttribute("data-toc-link") || ""))
+      .filter(Boolean);
+    let ticking = false;
+    let lastFocusedImage = null;
+
+    function updateReadingTools() {
+      if (!article) return;
+      const start = article.getBoundingClientRect().top + window.scrollY;
+      const end = start + article.scrollHeight - window.innerHeight;
+      const raw = end <= start ? 1 : (window.scrollY - start) / (end - start);
+      const ratio = Math.min(1, Math.max(0, raw));
+
+      if (progress) {
+        progress.style.transform = `scaleX(${ratio})`;
+      }
+
+      if (backToTop) {
+        backToTop.classList.toggle("is-visible", window.scrollY > 520);
+      }
+
+      const activeHeading = headingTargets
+        .slice()
+        .reverse()
+        .find((heading) => heading.getBoundingClientRect().top <= 120);
+      const activeId = activeHeading?.id || "";
+      tocLinks.forEach((link) => {
+        const isActive = link.getAttribute("data-toc-link") === activeId;
+        link.classList.toggle("active", isActive);
+        if (isActive) {
+          link.setAttribute("aria-current", "location");
+        } else {
+          link.removeAttribute("aria-current");
+        }
+      });
+    }
+
+    function requestUpdate() {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(() => {
+        updateReadingTools();
+        ticking = false;
+      });
+    }
+
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate);
+    backToTop?.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    function openLightbox(image) {
+      if (!lightbox || !lightboxImage) return;
+      const caption = image.alt || "";
+      lastFocusedImage = image;
+      lightboxImage.src = image.currentSrc || image.src;
+      lightboxImage.alt = caption;
+      if (lightboxCaption) {
+        lightboxCaption.textContent = caption;
+        lightboxCaption.hidden = !caption;
+      }
+      lightbox.classList.add("is-open");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.classList.add("has-lightbox");
+      lightboxClose?.focus();
+    }
+
+    function closeLightbox() {
+      if (!lightbox || !lightboxImage) return;
+      lightbox.classList.remove("is-open");
+      lightbox.setAttribute("aria-hidden", "true");
+      lightboxImage.src = "";
+      document.body.classList.remove("has-lightbox");
+      lastFocusedImage?.focus();
+      lastFocusedImage = null;
+    }
+
+    article?.querySelectorAll("img").forEach((image) => {
+      if (image.closest("a")) return;
+      image.classList.add("is-lightbox-enabled");
+      image.setAttribute("role", "button");
+      image.setAttribute("tabindex", "0");
+      image.setAttribute("aria-label", `${image.alt || "文章图片"}，点击放大`);
+      image.addEventListener("click", () => openLightbox(image));
+      image.addEventListener("keydown", (event) => {
+        if (event.key !== "Enter" && event.key !== " ") return;
+        event.preventDefault();
+        openLightbox(image);
+      });
+    });
+
+    lightboxClose?.addEventListener("click", closeLightbox);
+    lightbox?.addEventListener("click", (event) => {
+      if (event.target === lightbox) closeLightbox();
+    });
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && lightbox?.classList.contains("is-open")) closeLightbox();
+    });
+    updateReadingTools();
+  </script>
+</BaseLayout>
